@@ -13,3 +13,11 @@ def index():
         time=datetime.now(),
         news_items=news_items.values()
     )
+@app.route('/news/<int:id>/')
+def show_news_item(id):
+    item = news_items[id]
+    return render_template(
+        'news_item.html',
+        title=item['title'],
+        body=item['body']
+    )
